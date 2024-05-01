@@ -2,5 +2,5 @@
 """Some doc"""
 
 
-def add(a: float, b: float):
-    return float(a + b)
+def add(a: float, b: float) -> float:
+    return a + b
