@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 """Some doc"""
-
-
-
 from typing import Callable
 
 
