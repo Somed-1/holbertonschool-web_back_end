@@ -3,4 +3,5 @@
 
 
 def add(a: float, b: float) -> float:
+    """Some doc"""
     return a + b
