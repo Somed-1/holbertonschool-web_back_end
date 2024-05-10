@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
-"""Find things"""
+""" Something """
 from pymongo import MongoClient
 
+
 if __name__ == "__main__":
-    """Find things"""
-    client = MongoClient('mongodb://127.0.0.1:27017')
-    logs_collection = client.logs.nginx
-    length = logs_collection.count_documents({})
-    arr = ["GET", "POST", "PUT", "PATCH", "DELETE"]
-
-    print(f"{length} logs")
-    print("Methods:")
-    for method in arr:
-        lengths = logs_collection.count_documents({"method": method})
-        print(f"\tmethod {method}: {lengths}")
-
-    status = logs_collection.count_documents(
+    """ Something """
+    client = MongoClient()
+    db = client.logs
+    collection = db.nginx
+    total_logs = collection.count_documents({})
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    method_counts = {
+        method: collection.count_documents({"method": method})
+        for method in methods
+    }
+    status_check_count = collection.count_documents(
         {"method": "GET", "path": "/status"}
     )
-    print(f"{status} status check")
+    print(f"{total_logs} logs")
+    print("Methods:")
+    for method, count in method_counts.items():
+        print(f"\tmethod {method}: {count}")
+    print(f"{status_check_count} status check")
