@@ -15,6 +15,7 @@ if __name__ == "__main__":
         lengths = logs_collection.count_documents({"method": method})
         print(f"\tmethod {method}: {lengths}")
 
-    status = logs_collection.count_documents({"method": "GET", "path": "/status"})
+    status = logs_collection.count_documents(
+        {"method": "GET", "path": "/status"}
+    )
     print(f"{status} status check")
-
