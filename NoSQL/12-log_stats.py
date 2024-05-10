@@ -2,7 +2,6 @@
 """Find things"""
 from pymongo import MongoClient
 
-
 if __name__ == "__main__":
     """Find things"""
     client = MongoClient('mongodb://127.0.0.1:27017')
@@ -10,12 +9,12 @@ if __name__ == "__main__":
     length = logs_collection.count_documents({})
     arr = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
-    print("{0} logs".format(length))
+    print(f"{length} logs")
     print("Methods:")
     for method in arr:
         lengths = logs_collection.count_documents({"method": method})
-        print("\tmethod {0}: {1}".format(method, lengths))
+        print(f"\tmethod {method}: {lengths}")
 
-    status = logs_collection.count_documents({"method": "GET",
-                                              "path": "/status"})
-    print("{0} status check".format(status))
+    status = logs_collection.count_documents({"method": "GET", "path": "/status"})
+    print(f"{status} status check")
+
